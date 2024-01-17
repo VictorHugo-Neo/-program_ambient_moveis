@@ -1,0 +1,34 @@
+# gui.kv
+
+<GratitudeScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Gratitude Screen"
+            font_size: "20sp"
+        TextInput:
+            id: txt_gratidao
+            multiline: True
+        Button:
+            text: "Adicionar Gratidão"
+            on_release: root.inserir_gratidao(txt_gratidao.text)
+        Button:
+            text: "Visualizar Gratidões"
+            on_release: root.visualizar_gratidoes()
+        Label:
+            id: lbl_resposta
+
+<GratitudeListScreen>:
+    lista_gratidoes: lista_gratidoes
+    BoxLayout:
+        orientation: "vertical"
+        ScrollView:
+            GridLayout:
+                id: lista_gratidoes
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+        Button:
+            text: "Voltar para a Tela de Gratidão"
+            on_release: root.manager.current = "gratitude_screen"
+
